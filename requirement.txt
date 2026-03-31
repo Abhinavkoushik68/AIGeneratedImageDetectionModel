@@ -1,0 +1,7 @@
+numpy==1.26.4
+tensorflow==2.15.0
+opencv-python==4.9.0.80
+pillow
+gradio
+matplotlib
+scikit-learn
