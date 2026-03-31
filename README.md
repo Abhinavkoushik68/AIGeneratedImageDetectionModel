@@ -1,109 +1,91 @@
-# AIGeneratedImageDetectionModel
-
-# AI vs Real Image Classifier
-
-A deep learning-based image classification model to detect whether a given image is **AI-generated** or **real**. This project leverages convolutional neural networks (CNNs) using TensorFlow and Keras to classify images with high precision, trained on a large dataset of 100,000 labeled images.
-
----
+# 🧠 AI-Generated Image Detection using Computer Vision
 
 ## 📌 Overview
 
-### ❓ The Need for This Project
+This project focuses on detecting whether an image is **AI-generated or real** using Computer Vision techniques. With the rapid advancement of generative models, distinguishing synthetic images from real-world images has become a critical challenge.
 
-With the rapid advancement of AI image generation tools like DALL·E, MidJourney, and Stable Diffusion, distinguishing between real and synthetically generated images has become increasingly difficult for both the general public and even automated systems. This poses potential risks in media authenticity, misinformation, copyright violations, and digital forensics.
-
-The ability to accurately **detect AI-generated images** is crucial in multiple domains:
-- **Journalism** – Verifying authenticity of published visuals.
-- **Cybersecurity** – Detecting fake identities or misleading visuals.
-- **Social Media** – Curbing deepfakes and visual misinformation.
-- **Academic & Research Integrity** – Ensuring image authenticity in submissions.
-
-### ✅ How This Project Addresses the Problem
-
-This project presents a practical and scalable solution by building a machine learning pipeline capable of:
-- Automatically loading and preprocessing large volumes of image data.
-- Training a robust CNN to distinguish between AI and real images.
-- Evaluating model performance using metrics such as accuracy, precision, and recall.
-- Providing prediction capabilities on unseen images.
-- Saving and deploying the trained model for inference in real-world use cases.
+The system uses a deep learning-based image classification model to analyze visual patterns and identify subtle artifacts present in AI-generated images.
 
 ---
 
-## 🧠 Model Architecture
+## 🎯 Problem Statement
 
-- **Input size**: (32 x 32 x 3) RGB images
-- **Convolution Layers**: 3 layers with ReLU activations
-- **Pooling Layers**: MaxPooling after each convolution
-- **Dense Layers**: 
-  - 1 Hidden layer with 32 neurons (ReLU)
-  - 1 Output layer with sigmoid activation for binary classification
-- **Optimizer**: Adam
-- **Loss Function**: Binary Crossentropy
-- **Accuracy Achieved**: ~94.5% on training, ~91.6% on validation
+With the rise of generative AI, fake images are becoming increasingly realistic and difficult to detect. This project aims to build a system that can automatically classify images as:
 
----
+- **AI-Generated**
+- **Real**
 
-## 📂 Dataset
-
-- Total images: **100,000**
-- Classes: `REAL` and `FAKE`
-- Source directory structured for TensorFlow loading
-- Dataset was split into:
-  - 80% for training
-  - 10% for validation
-  - 10% for testing
+Applications include:
+- Deepfake detection  
+- Fake news prevention  
+- Content authenticity verification  
 
 ---
 
-## ⚙️ Preprocessing
+## 🧠 Approach
 
-- Rescaling pixel values from `[0, 255]` to `[0, 1]`
-- Batch loading using `image_dataset_from_directory`
-- Dataset conversion to numpy iterators for visualization
-- Image reshaping and resizing using OpenCV and TensorFlow
+The project follows a standard Computer Vision pipeline:
 
----
+Input Image → Preprocessing → CNN Model → Prediction
 
-## 📈 Training Performance
-
-The model was trained over 20 epochs and logged via TensorBoard. Key highlights:
-
-- Validation accuracy plateaued around **91.6%**
-- Model showed good generalization on test data
-- Evaluation metrics on test set:
-  - **Precision**: 0.923
-  - **Recall**: 0.913
-  - **Accuracy**: 0.919
-
-Performance visualizations:
-- Loss vs Epoch
-- Accuracy vs Epoch
+### Key Steps:
+- Image preprocessing (resizing, normalization)
+- Feature extraction using CNN
+- Classification into AI-generated or real images
 
 ---
 
-## 🧪 Testing & Inference
+## 🛠️ Tech Stack
 
-You can test the model using new unseen images by:
-
-1. Loading the `.keras` model from the saved path.
-2. Resizing and normalizing input images.
-3. Making predictions via `model.predict()`.
-4. Interpreting the output probability:
-   - `> 0.5`: Predicted as **REAL**
-   - `<= 0.5`: Predicted as **AI**
+- Python  
+- TensorFlow / Keras  
+- NumPy  
+- OpenCV (optional)  
+- Gradio (for GUI)
 
 ---
 
-## 🛠️ Installation & Usage
+---
 
-### 🔧 Requirements
-- Python ≥ 3.8
-- TensorFlow ≥ 2.8
-- OpenCV
-- Matplotlib
-- NumPy
+## ⚙️ Installation
 
-### 📦 Installation
-```bash
-pip install tensorflow opencv-python matplotlib numpy
+### 1. Clone the repository
 
+git clone https://github.com/Abhinavkoushik68/AIGeneratedImageDetectionModel
+
+cd AIGeneratedImageDetectionModel
+
+
+---
+
+### 2. Install dependencies
+
+pip install -r requirements.txt
+
+---
+
+## ▶️ How to Run
+
+### ✅ Run GUI (Gradio)
+
+python app_ui.py
+
+- Opens a local web interface  
+- Upload an image  
+- Click **Submit**  
+- View prediction  
+
+---
+
+## 🧪 Input
+
+- Image files (`.jpg`, `.png`, `.jpeg`)
+- Upload via GUI
+
+---
+
+## 📊 Output
+
+- Predicted label:
+  - **AI Generated**
+  - **Real**
